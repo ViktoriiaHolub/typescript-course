@@ -1,18 +1,25 @@
-let character = "mario";
-let age = 30;
-let isBlackBelt = false;
+// arrays
+let names = ["luigi", "mario", "yoshi"];
 
-// character = 20 // Error
-character = "luigi";
+names.push("toad");
+// names.push(3); // Error
+// names[0] = true // Error
 
-// age = 'yoshi' // Error
-age = 40;
+// objects
 
-// isBlackBelt = 'yes' // Error
-isBlackBelt = true;
-
-const circ = (diameter: number) => {
-  return diameter * Math.PI;
+let ninja = {
+  name: "mario",
+  belt: "black",
+  age: 30,
 };
 
-console.log(circ(5.5));
+ninja.age = 40;
+ninja.name = "riu";
+// ninja.age = '30' // Error
+// ninja.height = 140; // Error
+
+ninja = {
+  name: "yoshi",
+  belt: "orange",
+  age: 40,
+};
