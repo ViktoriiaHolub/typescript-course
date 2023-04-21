@@ -1,27 +1,14 @@
-let greet: Function;
+type Uid = string | number;
+type objWithName = { name: string; uid: Uid };
 
-// greet = 'hello'
-
-greet = () => {
-  console.log("hello");
+const logDetails = (uid: Uid, item: string) => {
+  console.log(`${item} has a uid of ${uid}`);
 };
 
-const sum = (
-  a: number,
-  b: number,
-  c: number = 10,
-  d?: number | string
-): void => {
-  console.log(a + b + c);
-  console.log(d);
+const greeting = (user: objWithName) => {
+  console.log(`${user.name} says hello`);
 };
 
-sum(10, 23, 4);
-
-const minus = (a: number, b: number): number => {
-  return a + b;
+const leaving = (user: objWithName) => {
+  console.log(`${user.name} says bye`);
 };
-
-let result = minus(10, 4);
-result = 5;
-// result = 'hello' // Error
