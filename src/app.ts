@@ -1,17 +1,14 @@
 // classes
 class Invoice {
-  client: string;
-  details: string;
-  amount: number;
+  // readonly client: string;
+  // private details: string;
+  // public amount: number;
 
-  constructor(c: string, d: string, a: number) {
-    this.client = c;
-    this.details = d;
-    this.amount = a;
+  constructor(readonly client: string, private details: string, public amount: number) {
   }
 
   format() {
-    return `${this.client} owes $${this.amount} for ${this.amount}`;
+    return `${this.client} owes $${this.amount} for ${this.details}`;
   }
 }
 
@@ -21,10 +18,17 @@ const invTwo = new Invoice("Luigi", "working", 1000);
 let invoices: Invoice[] = [];
 invoices.push(invOne);
 invoices.push(invTwo);
-invOne.client = "Yoshi";
+// invOne.client = "Yoshi"; // Error
 invTwo.amount = 400;
+// invTwo.details = 'resting' // Error
 
 console.log(invOne, invTwo);
+
+invoices.forEach((invoice) => {
+  console.log(
+    `${invoice.client} currently has ${invoice.amount}. ${invoice.format()}`
+  );
+});
 
 // DOM
 const anchor = document.querySelector("a")!;
