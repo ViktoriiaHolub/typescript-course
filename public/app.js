@@ -29,12 +29,14 @@ const amount = document.querySelector("#amount");
 let itemList = document.querySelector(".item-list");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let values;
+    values = [toFrom.value, details.value, amount.valueAsNumber];
     let filledForm;
     if (type.value === "Payment") {
-        filledForm = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+        filledForm = new Payment(...values);
     }
     else {
-        filledForm = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+        filledForm = new Invoice(...values);
     }
     let createdList = new ListTemplate(itemList);
     createdList.render(filledForm, type.value, "end");
@@ -65,3 +67,6 @@ const docThree = {
     data: { format: "tsx", countOfPages: 318 },
 };
 console.log(docTwo, docThree);
+// TUPLE
+let tup = ["ryu", 25, true];
+// tup[2] = 1 // Error

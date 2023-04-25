@@ -44,11 +44,15 @@ let itemList = document.querySelector(".item-list")! as HTMLUListElement;
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
+  let values: [string, string, number];
+
+  values = [toFrom.value, details.value, amount.valueAsNumber];
+
   let filledForm: HasFormatter;
   if (type.value === "Payment") {
-    filledForm = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    filledForm = new Payment(...values);
   } else {
-    filledForm = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    filledForm = new Invoice(...values);
   }
 
   let createdList = new ListTemplate(itemList);
@@ -58,7 +62,6 @@ form.addEventListener("submit", (e: Event) => {
 });
 
 // ENUMS
-
 enum ResourceType {
   Book,
   Author,
@@ -92,3 +95,7 @@ const docThree: Resource<object> = {
 };
 
 console.log(docTwo, docThree);
+
+// TUPLE
+let tup: [string, number, boolean] = ["ryu", 25, true];
+// tup[2] = 1 // Error
