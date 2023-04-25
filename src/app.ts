@@ -51,9 +51,32 @@ form.addEventListener("submit", (e: Event) => {
     filledForm = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
   }
 
-  let createdList = new ListTemplate(itemList)  
-  createdList.render(filledForm, type.value, 'end');
+  let createdList = new ListTemplate(itemList);
+  createdList.render(filledForm, type.value, "end");
 
   console.log("filledForm", filledForm);
-
 });
+
+// GENERICS
+
+const addUID = <T>(obj: T) => {
+  const uid = Math.floor(Math.random() * 100);
+  return { ...obj, uid };
+};
+
+const docOne = addUID({ name: "Tom", age: 20 });
+console.log(docOne);
+docOne.name = "Bob";
+
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
+
+const docTwo: Resource<string> = { uid: 1, resourceName: "doc1", data: "file" };
+const docThree: Resource<object> = {
+  uid: 1,
+  resourceName: "doc1",
+  data: { format: "tsx", countOfPages: 318 },
+};

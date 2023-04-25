@@ -37,6 +37,20 @@ form.addEventListener("submit", (e) => {
         filledForm = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
     }
     let createdList = new ListTemplate(itemList);
-    createdList.render(filledForm, type.value, 'end');
+    createdList.render(filledForm, type.value, "end");
     console.log("filledForm", filledForm);
 });
+// GENERICS
+const addUID = (obj) => {
+    const uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+const docOne = addUID({ name: "Tom", age: 20 });
+console.log(docOne);
+docOne.name = "Bob";
+const docTwo = { uid: 1, resourceName: "doc1", data: "file" };
+const docThree = {
+    uid: 1,
+    resourceName: "doc1",
+    data: { format: "tsx", countOfPages: 318 },
+};
